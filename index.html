@@ -3,97 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>5STARS RECIPES - המתכונים שלי</title>
+    <title>5STARS RECIPES - המאגר המשפחתי</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Assistant', sans-serif; background-color: #fafafa; }
-        .recipe-card:hover img { transform: scale(1.05); }
+        body { font-family: 'Assistant', sans-serif; background-color: #f8fafc; }
+        .recipe-card:hover { transform: translateY(-4px); transition: all 0.3s ease; }
     </style>
 </head>
 <body class="text-slate-900">
 
-    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <h1 class="text-2xl font-bold tracking-tight text-slate-800">5STARS RECIPES</h1>
-            <div class="relative max-w-md w-full">
-                <i data-lucide="search" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5"></i>
-                <input type="text" id="searchInput" placeholder="חפש מתכון או קטגוריה..." 
-                    class="w-full pr-10 pl-4 py-2 bg-slate-100 border-none rounded-full focus:ring-2 focus:ring-slate-400 outline-none transition-all">
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
+            <h1 class="text-2xl font-bold text-slate-800">5STARS RECIPES ⭐️</h1>
+            <div class="flex gap-2 w-full md:w-auto">
+                <input type="text" id="searchInput" placeholder="חפש מתכון..." class="w-full md:w-64 px-4 py-2 bg-slate-100 border-none rounded-lg focus:ring-2 focus:ring-orange-400 outline-none">
+                <button onclick="toggleAddModal()" class="bg-orange-500 text-white px-4 py-2 rounded-lg font-bold hover:bg-orange-600 flex items-center gap-2 whitespace-nowrap">
+                    <i data-lucide="plus-circle" class="w-5 h-5"></i> הוסף מתכון
+                </button>
             </div>
         </div>
     </header>
 
-    <section class="py-12 px-4 text-center">
-        <h2 class="text-4xl font-extrabold text-slate-900 mb-2">המתכונים הנבחרים שלי</h2>
-        <p class="text-slate-500 max-w-lg mx-auto">ריכוז כל המתכונים שקיבלו 5 כוכבים במטבח שלנו. בתיאבון!</p>
-    </section>
-
-    <main class="max-w-6xl mx-auto px-4 pb-20">
-        <div id="recipesGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            </div>
+    <main class="max-w-6xl mx-auto px-4 py-10">
+        <div id="recipesGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
     </main>
 
+    <div id="addModal" class="hidden fixed inset-0 bg-black/50 flex items-center justify-center z-[100] px-4">
+        <div class="bg-white rounded-2xl p-6 w-full max-w-md shadow-2xl">
+            <h2 class="text-xl font-bold mb-4 text-slate-800">הוספת מתכון חדש</h2>
+            <div class="space-y-4">
+                <input type="text" id="newTitle" placeholder="שם המתכון" class="w-full p-3 bg-slate-50 border rounded-xl outline-none focus:border-orange-500">
+                <input type="text" id="newUrl" placeholder="לינק למתכון (WhatsApp/Web)" class="w-full p-3 bg-slate-50 border rounded-xl outline-none focus:border-orange-500">
+                <select id="newCat" class="w-full p-3 bg-slate-50 border rounded-xl outline-none">
+                    <option value="כללי">בחר קטגוריה</option>
+                    <option value="מרקים">מרקים</option>
+                    <option value="בשר">בשר</option>
+                    <option value="דגים">דגים</option>
+                    <option value="סלטים">סלטים</option>
+                    <option value="קינוחים">קינוחים</option>
+                </select>
+                <div class="flex gap-2 pt-2">
+                    <button onclick="addRecipe()" class="flex-1 bg-orange-500 text-white py-3 rounded-xl font-bold hover:bg-orange-600 transition-colors">שמור מתכון</button>
+                    <button onclick="toggleAddModal()" class="flex-1 bg-slate-200 text-slate-700 py-3 rounded-xl font-bold hover:bg-slate-300 transition-colors">ביטול</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // מאגר המתכונים שלך - כאן תוכל להוסיף עוד בקלות!
-        const recipes = [
-          const recipes = [
-            { id: 101, title: "מרק דלעת בניחוח כמון ותפוזים", category: "מרקים", rating: 5, image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%9E%D7%A8%D7%A7-%D7%93%D7%9C%D7%A2%D7%AA-%D7%91%D7%A0%D7%99%D7%97%D7%95%D7%97-%D7%9Adjust-%D7%9E%D7%95%D7%9F-%D7%95%D7%AA%D7%A4%D7%95%D7%96%D7%99%D7%9D/" },
-            { id: 102, title: "מרק כרובית עם חלב שקדים", category: "מרקים", rating: 5, image: "https://images.unsplash.com/photo-1594756202469-9ff9799b2e42?w=800", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%9E%D7%A8%D7%A7-%D7%9B%D7%A8%D7%95%D7%91%D7%99%D7%AA-%D7%A2%D7%9D-%D7%97%D7%9C%D7%91-%D7%A9%D7%A7%D7%93%D7%99%D7%9D-%D7%A9%D7%9E%D7%9F-%D7%91%D7%96%D7%99%D7%9C%D7%99%D7%A7%D7%95%D7%9D/" },
-            { id: 103, title: "פלאק טופו", category: "צמחוני", rating: 4, image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%d7%a4%d7%9c%d7%90%d7%a7-%d7%98%d7%95%d7%a4%d7%95/" },
-            { id: 104, title: "קרמבו במילוי שוקולד חלב", category: "קינוחים", rating: 5, image: "https://images.unsplash.com/photo-1564035032355-2e6b5396666d?w=800", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A7%D7%A8%D7%9E%D7%91%D7%95-%D7%91%D7%9E%D7%99%D7%9C%D7%95%D7%99-%D7%A9%D7%95%D7%A7%D7%95%D7%9C%D7%93-%D7%97%D7%9C%D7%91/" },
-            { id: 105, title: "מרק קרם ארטישוק ירושלמי", category: "מרקים", rating: 5, image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%d7%9e%d7%a8%d7%a7-%d7%a7%d7%a8%d7%9d-%d7%90%d7%a8%d7%98%d7%99%d7%a9%d7%95%d7%a7-%d7%99%d7%a8%d7%95%d7%a9%d7%9c%d7%9e%d7%99-%d7%95%d7%aa%d7%a8%d7%93/" },
-            { id: 106, title: "ריזוטי פטריות של אורטל", category: "איטלקי", rating: 5, image: "https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=800", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A8%D7%99%D7%96%D7%95%D7%98%D7%95-%D7%A4%D7%98%D7%A8%D7%99%D7%95%D7%AA-%D7%A9%D7%9C-%D7%90%D7%95%D7%A8%D7%94%D7%9C-%D7%A8%D7%95%D7%96%D7%A0%D7%91%D7%A8%D7%92/" },
-            { id: 107, title: "ספגטי מי meatballs של לייזה", category: "איטלקי", rating: 5, image: "https://images.unsplash.com/photo-1515516969-d4008cc6241a?w=800", url: "https://lizapanelim.com/%d7%a1%d7%a4%d7%92%d7%98%d7%99-%d7%9e%d7%99%d7%98-%d7%91%d7%95%d7%9c%d7%a1/" },
-            { id: 108, title: "טארט טאטן בצל מקורמל", category: "מאפים", rating: 5, image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800", url: "https://foody.co.il/foody_recipe/%D7%9E%D7%90%D7%A8%D7%98-%D7%90%D7%90%D7%9E%D7%9F-%D7%91%D7%A6%D7%9C-%D7%9E%D7%remote-9D%D7%A7%D7%95%D7%A8%D7%9E%D7%9C-%D7%91%D7%9C%D7%A1%D7%9E%D7%99-%D7%95%D7%20%D7%92%D7%91%D7%99%D7%A0%D7%AA-%D7%A2%D7%99%D7%96%D7%99/" },
-            { id: 109, title: "סלט שומר, פומלה ולוביה", category: "סלטים", rating: 4, image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%d7%a1%d7%9c%d7%98-%d7%a9%d7%95%d7%9e%d7%a8-%d7%a4%d7%95%d7%9e%d7%9c%d7%94-%d7%95%d7%9c%d7%95%d7%91%d7%99%d7%94/" },
-            { id: 110, title: "ביף בורגיניון קלאסי", category: "בשר", rating: 5, image: "https://images.unsplash.com/photo-1534939561126-855b8675edd7?w=800", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%d7%91%d7%99%d7%a3-%d7%91%d7%95%d7%a8%d7%92%d7%99%d7%a0%d7%99%d7%95%d7%9f/" },
-            { id: 111, title: "שווארמה דג על פיתה צרובה", category: "דגים", rating: 5, image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=800", url: "https://foody.co.il/foody_recipe/%D7%A9%D7%95%D7%95%D7%90%D7%A8%D7%9E%D7%94-%D7%93%D7%92-%D7%A2%D7%9C-%D7%A4%D7%99%D7%AA%D7%94-%D7%A6%D7%A8%D7%95%D7%91%D7%94/" },
-            { id: 112, title: "חריימה של שף רפי כהן", category: "דגים", rating: 5, image: "https://images.unsplash.com/photo-1534604973900-c41ab4c5e636?w=800", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%97%D7%A8%D7%99%D7%99%D7%9E%D7%94-%D7%A9%D7%9C-%D7%A9%D7%A3-%D7%A8%D7%A4%D7%99-%D7%9B%D7%94%D7%9F/" },
-            { id: 113, title: "סופלקי פרגיות יווני", category: "בשר", rating: 5, image: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=800", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A1%D7%95%D7%A4%D7%9C%D7%A7%D7%99-%D7%A4%D7%A8%D7%92%D7%99%D7%95%D7%AA/" },
-            { id: 114, title: "שניצל ממולא של אייל שני", category: "בשר", rating: 5, image: "https://images.unsplash.com/photo-1594465911080-dd025b340a4b?w=800", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A9%D7%A0%D7%99%D7%A6%D7%9C-%D7%9E%D7%9E%D7%95%D7%9C%D7%90-%D7%A9%D7%9C-%D7%90%D7%99%D7%99%D7%9C-%D7%A9%D7%A0%D7%99/" },
-            { id: 115, title: "פאיאה סינטה ועשבי תיבול", category: "בשר", rating: 4, image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A4%D7%90%D7%93-%D7%AA%D7%90%D7%99-2/" },
-            { id
+        // המאגר שחולץ מהווטסאפ שלכם
+        const initialRecipes = [
+            { title: "מרק דלעת, כמון ותפוזים", category: "מרקים", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%9E%D7%A8%D7%A7-%D7%93%D7%9C%D7%A2%D7%AA-%D7%91%D7%A0%D7%99%D7%97%D7%95%D7%97-%D7%9Adjust-%D7%9E%D7%95%D7%9F-%D7%95%D7%AA%D7%A4%D7%95%D7%96%D7%99%D7%9D/", img: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600" },
+            { title: "מרק כרובית וחלב שקדים", category: "מרקים", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%9E%D7%A8%D7%A7-%D7%9B%D7%A8%D7%95%D7%91%D7%99%D7%AA-%D7%A2%D7%9D-%D7%97%D7%9C%D7%91-%D7%A9%D7%A7%D7%93%D7%99%D7%9D/", img: "https://images.unsplash.com/photo-1594756202469-9ff9799b2e42?w=600" },
+            { title: "בשר מפורק בבישול ארוך", category: "בשר", url: "https://www.10dakot.co.il/recipe/%D7%90%D7%A1%D7%90%D7%93%D7%95-%D7%9E%D7%A4%D7%95%D7%A8%D7%A7/", img: "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=600" },
+            { title: "דג מרוקאי של נירה", category: "דגים", url: "#", img: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=600" },
+            { title: "ראמן עוף של אהרוני", category: "מרקים", url: "https://share.google/ydCRteDbgbYBf4vVb", img: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600" },
+            { title: "קאצ'ו א פפה - מושיקו גמליאל", category: "איטלקי", url: "https://search.app/i6dnymho4szMDDBV9", img: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600" },
+            { title: "חריימה של שף רפי כהן", category: "דגים", url: "https://search.app/JxXRT9xBwYmjHzWFA", img: "https://images.unsplash.com/photo-1534604973900-c41ab4c5e636?w=600" },
+            { title: "סלופי ג'ו קלאסי", category: "בשר", url: "https://search.app/fSJXr9fUZCM1j7Wz5", img: "https://images.unsplash.com/photo-1544025162-d76694265947?w=600" }
         ];
 
-        function renderRecipes(filter = "") {
+        let recipes = [...initialRecipes];
+
+        function render() {
+            const term = document.getElementById('searchInput').value.toLowerCase();
             const grid = document.getElementById('recipesGrid');
-            grid.innerHTML = "";
-
-            const filtered = recipes.filter(r => 
-                r.title.includes(filter) || r.category.includes(filter)
-            );
-
-            filtered.forEach(recipe => {
-                const card = `
-                    <div class="recipe-card group bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 transition-all duration-300 hover:shadow-xl">
-                        <div class="relative overflow-hidden aspect-video">
-                            <img src="${recipe.image}" alt="${recipe.title}" class="w-full h-full object-cover transition-transform duration-500">
-                            <span class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-slate-700 shadow-sm">${recipe.category}</span>
-                        </div>
-                        <div class="p-5">
-                            <h3 class="text-xl font-bold text-slate-800 mb-2">${recipe.title}</h3>
-                            <div class="flex items-center gap-1 mb-4">
-                                ${Array(5).fill(0).map((_, i) => `<i data-lucide="star" class="w-4 h-4 ${i < recipe.rating ? 'fill-yellow-400 text-yellow-400' : 'text-slate-200'}"></i>`).join('')}
-                            </div>
-                            <button class="w-full py-2 bg-slate-900 text-white rounded-xl font-semibold hover:bg-slate-700 transition-colors">צפה במתכון</button>
-                        </div>
-                    </div>
-                `;
-                grid.innerHTML += card;
-            });
-            lucide.createIcons();
-        }
-
-        // האזנה לחיפוש
-        document.getElementById('searchInput').addEventListener('input', (e) => {
-            renderRecipes(e.target.value);
-        });
-
-        // רינדור ראשוני
-        renderRecipes();
-        lucide.createIcons();
-    </script>
-</body>
-</html>
+            grid.innerHTML = recipes.filter(r => r.title.toLowerCase().includes(term) || r.category.toLowerCase().includes(term))
+                .map(r => `
+                <a href="${r.url}" target="_blank" class="recipe-card bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200 block transition-all">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="${r.img}" class="w-full h-full object-cover">
