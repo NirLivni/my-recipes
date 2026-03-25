@@ -38,34 +38,23 @@
     <script>
         // מאגר המתכונים שלך - כאן תוכל להוסיף עוד בקלות!
         const recipes = [
-            {
-                id: 1,
-                title: "פסטה קרבונרה איטלקית",
-                category: "פסטה",
-                rating: 5,
-                image: "https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&q=80&w=800"
-            },
-            {
-                id: 2,
-                title: "סלט יווני מרענן",
-                category: "סלטים",
-                rating: 5,
-                image: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&q=80&w=800"
-            },
-            {
-                id: 3,
-                title: "המבורגר בקר ביתי",
-                category: "בשרים",
-                rating: 4,
-                image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&q=80&w=800"
-            },
-            {
-                id: 4,
-                title: "עוגת שוקולד חמה",
-                category: "קינוחים",
-                rating: 5,
-                image: "https://images.unsplash.com/photo-1564035032355-2e6b5396666d?auto=format&fit=crop&q=80&w=800"
-            }
+          const recipes = [
+            { id: 101, title: "מרק דלעת בניחוח כמון ותפוזים", category: "מרקים", rating: 5, image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%9E%D7%A8%D7%A7-%D7%93%D7%9C%D7%A2%D7%AA-%D7%91%D7%A0%D7%99%D7%97%D7%95%D7%97-%D7%9Adjust-%D7%9E%D7%95%D7%9F-%D7%95%D7%AA%D7%A4%D7%95%D7%96%D7%99%D7%9D/" },
+            { id: 102, title: "מרק כרובית עם חלב שקדים", category: "מרקים", rating: 5, image: "https://images.unsplash.com/photo-1594756202469-9ff9799b2e42?w=800", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%9E%D7%A8%D7%A7-%D7%9B%D7%A8%D7%95%D7%91%D7%99%D7%AA-%D7%A2%D7%9D-%D7%97%D7%9C%D7%91-%D7%A9%D7%A7%D7%93%D7%99%D7%9D-%D7%A9%D7%9E%D7%9F-%D7%91%D7%96%D7%99%D7%9C%D7%99%D7%A7%D7%95%D7%9D/" },
+            { id: 103, title: "פלאק טופו", category: "צמחוני", rating: 4, image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%d7%a4%d7%9c%d7%90%d7%a7-%d7%98%d7%95%d7%a4%d7%95/" },
+            { id: 104, title: "קרמבו במילוי שוקולד חלב", category: "קינוחים", rating: 5, image: "https://images.unsplash.com/photo-1564035032355-2e6b5396666d?w=800", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A7%D7%A8%D7%9E%D7%91%D7%95-%D7%91%D7%9E%D7%99%D7%9C%D7%95%D7%99-%D7%A9%D7%95%D7%A7%D7%95%D7%9C%D7%93-%D7%97%D7%9C%D7%91/" },
+            { id: 105, title: "מרק קרם ארטישוק ירושלמי", category: "מרקים", rating: 5, image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=800", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%d7%9e%d7%a8%d7%a7-%d7%a7%d7%a8%d7%9d-%d7%90%d7%a8%d7%98%d7%99%d7%a9%d7%95%d7%a7-%d7%99%d7%a8%d7%95%d7%a9%d7%9c%d7%9e%d7%99-%d7%95%d7%aa%d7%a8%d7%93/" },
+            { id: 106, title: "ריזוטי פטריות של אורטל", category: "איטלקי", rating: 5, image: "https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=800", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A8%D7%99%D7%96%D7%95%D7%98%D7%95-%D7%A4%D7%98%D7%A8%D7%99%D7%95%D7%AA-%D7%A9%D7%9C-%D7%90%D7%95%D7%A8%D7%94%D7%9C-%D7%A8%D7%95%D7%96%D7%A0%D7%91%D7%A8%D7%92/" },
+            { id: 107, title: "ספגטי מי meatballs של לייזה", category: "איטלקי", rating: 5, image: "https://images.unsplash.com/photo-1515516969-d4008cc6241a?w=800", url: "https://lizapanelim.com/%d7%a1%d7%a4%d7%92%d7%98%d7%99-%d7%9e%d7%99%d7%98-%d7%91%d7%95%d7%9c%d7%a1/" },
+            { id: 108, title: "טארט טאטן בצל מקורמל", category: "מאפים", rating: 5, image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800", url: "https://foody.co.il/foody_recipe/%D7%9E%D7%90%D7%A8%D7%98-%D7%90%D7%90%D7%9E%D7%9F-%D7%91%D7%A6%D7%9C-%D7%9E%D7%remote-9D%D7%A7%D7%95%D7%A8%D7%9E%D7%9C-%D7%91%D7%9C%D7%A1%D7%9E%D7%99-%D7%95%D7%20%D7%92%D7%91%D7%99%D7%A0%D7%AA-%D7%A2%D7%99%D7%96%D7%99/" },
+            { id: 109, title: "סלט שומר, פומלה ולוביה", category: "סלטים", rating: 4, image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=800", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%d7%a1%d7%9c%d7%98-%d7%a9%d7%95%d7%9e%d7%a8-%d7%a4%d7%95%d7%9e%d7%9c%d7%94-%d7%95%d7%9c%d7%95%d7%91%d7%99%d7%94/" },
+            { id: 110, title: "ביף בורגיניון קלאסי", category: "בשר", rating: 5, image: "https://images.unsplash.com/photo-1534939561126-855b8675edd7?w=800", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%d7%91%d7%99%d7%a3-%d7%91%d7%95%d7%a8%d7%92%d7%99%d7%a0%d7%99%d7%95%d7%9f/" },
+            { id: 111, title: "שווארמה דג על פיתה צרובה", category: "דגים", rating: 5, image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=800", url: "https://foody.co.il/foody_recipe/%D7%A9%D7%95%D7%95%D7%90%D7%A8%D7%9E%D7%94-%D7%93%D7%92-%D7%A2%D7%9C-%D7%A4%D7%99%D7%AA%D7%94-%D7%A6%D7%A8%D7%95%D7%91%D7%94/" },
+            { id: 112, title: "חריימה של שף רפי כהן", category: "דגים", rating: 5, image: "https://images.unsplash.com/photo-1534604973900-c41ab4c5e636?w=800", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%97%D7%A8%D7%99%D7%99%D7%9E%D7%94-%D7%A9%D7%9C-%D7%A9%D7%A3-%D7%A8%D7%A4%D7%99-%D7%9B%D7%94%D7%9F/" },
+            { id: 113, title: "סופלקי פרגיות יווני", category: "בשר", rating: 5, image: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=800", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A1%D7%95%D7%A4%D7%9C%D7%A7%D7%99-%D7%A4%D7%A8%D7%92%D7%99%D7%95%D7%AA/" },
+            { id: 114, title: "שניצל ממולא של אייל שני", category: "בשר", rating: 5, image: "https://images.unsplash.com/photo-1594465911080-dd025b340a4b?w=800", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A9%D7%A0%D7%99%D7%A6%D7%9C-%D7%9E%D7%9E%D7%95%D7%9C%D7%90-%D7%A9%D7%9C-%D7%90%D7%99%D7%99%D7%9C-%D7%A9%D7%A0%D7%99/" },
+            { id: 115, title: "פאיאה סינטה ועשבי תיבול", category: "בשר", rating: 4, image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A4%D7%90%D7%93-%D7%AA%D7%90%D7%99-2/" },
+            { id
         ];
 
         function renderRecipes(filter = "") {
