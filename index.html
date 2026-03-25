@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>5STARS RECIPES ⭐️</title>
+    <title>5STARS RECIPES ⭐️ המאגר המלא</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -14,12 +14,12 @@
 </head>
 <body class="text-slate-900 pb-20">
 
-    <header class="sticky top-0 z-50 bg-orange-500 text-white shadow-lg">
+    <header class="sticky top-0 z-50 bg-orange-600 text-white shadow-lg">
         <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
-            <h1 class="text-3xl font-black tracking-tight">5STARS RECIPES</h1>
+            <h1 class="text-3xl font-black tracking-tight cursor-pointer" onclick="window.location.reload()">5STARS RECIPES</h1>
             <div class="flex gap-2 w-full md:w-auto">
-                <input type="text" id="searchInput" placeholder="חפש מתכון..." class="w-full md:w-64 px-4 py-2 rounded-full text-slate-800 outline-none focus:ring-4 focus:ring-orange-300">
-                <button onclick="toggleAddModal()" class="bg-white text-orange-600 px-6 py-2 rounded-full font-bold hover:bg-orange-50 transition-colors flex items-center gap-2 shrink-0">
+                <input type="text" id="searchInput" placeholder="חפש מתכון (מרק, בשר, לייזה...)" class="w-full md:w-80 px-4 py-2 rounded-full text-slate-800 outline-none focus:ring-4 focus:ring-orange-300">
+                <button onclick="toggleAddModal()" class="bg-white text-orange-600 px-6 py-2 rounded-full font-bold hover:bg-orange-50 transition-colors flex items-center gap-2 shrink-0 shadow-sm">
                     <i data-lucide="plus-circle" class="w-5 h-5"></i> הוספה
                 </button>
             </div>
@@ -27,37 +27,27 @@
     </header>
 
     <main class="max-w-6xl mx-auto px-4 py-10">
-        <div id="recipesGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            </div>
+        <div id="recipesGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-center py-20 text-slate-400">
+            טוען מתכונים...
+        </div>
     </main>
 
-    <div id="addModal" class="hidden fixed inset-0 bg-black/60 flex items-center justify-center z-[100] p-4 backdrop-blur-sm">
-        <div class="bg-white rounded-3xl p-8 w-full max-w-md shadow-2xl scale-up">
-            <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
-                <i data-lucide="utensils" class="text-orange-500"></i> הוספת מתכון חדש
-            </h2>
+    <div id="addModal" class="hidden fixed inset-0 bg-black/70 flex items-center justify-center z-[100] p-4 backdrop-blur-sm">
+        <div class="bg-white rounded-3xl p-8 w-full max-w-md shadow-2xl">
+            <h2 class="text-2xl font-bold mb-6 flex items-center gap-2"><i data-lucide="utensils" class="text-orange-500"></i> הוספת מתכון</h2>
             <div class="space-y-4">
-                <div>
-                    <label class="block text-sm font-semibold mb-1">שם המנה</label>
-                    <input type="text" id="newTitle" placeholder="למשל: הראמן של אהרוני" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-orange-500">
-                </div>
-                <div>
-                    <label class="block text-sm font-semibold mb-1">לינק למתכון</label>
-                    <input type="text" id="newUrl" placeholder="הדבק כאן את הלינק מהווטסאפ" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none focus:border-orange-500">
-                </div>
-                <div>
-                    <label class="block text-sm font-semibold mb-1">קטגוריה</label>
-                    <select id="newCat" class="w-full p-3 bg-slate-50 border border-slate-200 rounded-xl outline-none">
-                        <option value="כללי">בחר קטגוריה</option>
-                        <option value="מרקים">מרקים</option>
-                        <option value="בשר">בשר</option>
-                        <option value="דגים">דגים</option>
-                        <option value="סלטים">סלטים</option>
-                        <option value="מאפים">מאפים</option>
-                    </select>
-                </div>
+                <input type="text" id="newTitle" placeholder="שם המתכון" class="w-full p-3 bg-slate-50 border rounded-xl outline-none focus:border-orange-500">
+                <input type="text" id="newUrl" placeholder="לינק למתכון" class="w-full p-3 bg-slate-50 border rounded-xl outline-none focus:border-orange-500">
+                <select id="newCat" class="w-full p-3 bg-slate-50 border rounded-xl outline-none">
+                    <option value="כללי">בחר קטגוריה</option>
+                    <option value="מרקים">מרקים</option>
+                    <option value="בשר">בשר</option>
+                    <option value="דגים">דגים</option>
+                    <option value="סלטים">סלטים</option>
+                    <option value="אסיאתי">אסיאתי</option>
+                </select>
                 <div class="flex gap-3 mt-6">
-                    <button onclick="addRecipe()" class="flex-1 bg-orange-500 text-white py-4 rounded-2xl font-bold hover:bg-orange-600 shadow-lg shadow-orange-200">שמור למאגר</button>
+                    <button onclick="addRecipe()" class="flex-1 bg-orange-600 text-white py-4 rounded-2xl font-bold hover:bg-orange-700">שמור</button>
                     <button onclick="toggleAddModal()" class="flex-1 bg-slate-100 text-slate-600 py-4 rounded-2xl font-bold hover:bg-slate-200">ביטול</button>
                 </div>
             </div>
@@ -65,108 +55,49 @@
     </div>
 
     <script>
-        // המאגר המקורי מהצ'אט שלכם
         const staticRecipes = [
-          const staticRecipes = [
-            { title: "מרק דלעת, כמון ותפוזים", category: "מרקים", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%9E%D7%A8%D7%A7-%D7%9D%D7%Adjust-%D7%9C%D7%A2%D7%AA-%D7%91%D7%A0%D7%99%D7%97%D7%95%D7%97-%D7%9Adjust-%D7%9E%D7%95%D7%9F-%D7%95%D7%AA%D7%A4%D7%95%D7%96%D7%99%D7%9D/", img: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600" },
+            { title: "מרק דלעת, כמון ותפוזים", category: "מרקים", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%9E%D7%A8%D7%A7-%D7%9Adjust-%D7%9C%D7%A2%D7%AA-%D7%91%D7%A0%D7%99%D7%97%D7%95%D7%97-%D7%9Adjust-%D7%9E%D7%95%D7%9F-%D7%95%D7%AA%D7%A4%D7%95%D7%96%D7%99%D7%9D/", img: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600" },
             { title: "מרק כרובית וחלב שקדים", category: "מרקים", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%9E%D7%A8%D7%A7-%D7%9B%D7%A8%D7%95%D7%91%D7%99%D7%AA-%D7%A2%D7%9D-%D7%97%D7%9C%D7%91-%D7%A9%D7%A7%D7%93%D7%99%D7%9D/", img: "https://images.unsplash.com/photo-1594756202469-9ff9799b2e42?w=600" },
-            { title: "ציר ירקות בסיסי", category: "מרקים", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A6%D7%99%D7%A8-%D7%99%D7%A8%D7%A7%D7%95%D7%AA/", img: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600" },
-            { title: "פלאק טופו", category: "צמחוני", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%d7%a4%d7%9c%d7%90%d7%a7-%d7%98%d7%95%d7%a4%d7%95/", img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600" },
-            { title: "קרמבו שוקולד חלב", category: "קינוחים", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A7%D7%A8%D7%9E%D7%91%D7%95-%D7%91%D7%9E%D7%99%D7%9C%D7%95%D7%99-%D7%A9%D7%95%D7%A7%D7%95%D7%9C%D7%93-%D7%97%D7%9C%D7%91/", img: "https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=600" },
-            { title: "מרק ארטישוק ירושלמי ותרד", category: "מרקים", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%d7%9e%d7%a8%d7%a7-%d7%a7%d7%95%d7%a7%d7%95%d7%a1/", img: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600" },
-            { title: "מרק בצל של הבראסרי", category: "מרקים", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%9E%D7%A8%D7%A7-%D7%91%D7%A6%D7%9C-%D7%A9%D7%9C-%D7%94%D7%91%D7%A8%D7%90%D7%A1%D7%A8%D7%99/", img: "https://images.unsplash.com/photo-1583394293235-4811f0083b61?w=600" },
-            { title: "ריזוטי פטריות - אורטל רוזנברג", category: "איטלקי", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A8%D7%99%D7%96%D7%95%D7%98%D7%95-%D7%A4%D7%98%D7%A8%D7%99%D7%95%D7%AA-%D7%A9%D7%9C-%D7%90%D7%95%D7%A8%D7%94%D7%9C-%D7%A8%D7%95%D7%96%D7%A0%D7%91%D7%A8%D7%92/", img: "https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=600" },
-            { title: "ספגטי מיטבולס - לייזה פאנלים", category: "איטלקי", url: "https://lizapanelim.com/%d7%a1%d7%a4%d7%92%d7%98%d7%99-%d7%9e%d7%99%d7%98-%d7%91%d7%95%d7%9c%d7%a1/", img: "https://images.unsplash.com/photo-1515516969-d4008cc6241a?w=600" },
-            { title: "טארט טאטן בצל וגבינת עיזים", category: "מאפים", url: "https://foody.co.il/foody_recipe/%D7%98%D7%90%D7%A8%D7%98-%D7%98%D7%90%D7%98%D7%9F-%D7%91%D7%A6%D7%9C-%D7%9E%D7%A7%D7%95%D7%A8%D7%9E%D7%9C-%D7%91%D7%9C%D7%A1%D7%9E%D7%99-%D7%95%D7%20%D7%92%D7%91%D7%99%D7%A0%D7%AA-%D7%A2%D7%99%D7%96%D7%99/", img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600" },
-            { title: "סלט שומר, פומלה ולוביה", category: "סלטים", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%d7%a1%d7%9c%d7%98-%d7%a9%d7%95%d7%9e%d7%a8-%d7%a4%d7%95%d7%9e%d7%9c%d7%94-%d7%95%d7%9c%d7%95%d7%91%d7%99%d7%94/", img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600" },
-            { title: "לחמניות המבורגר רכות בעולם", category: "מאפים", url: "https://www.ronyohananov.com/post/%D7%9C%D7%97%D7%9E%D7%A0%D7%99%D7%95%D7%AA-%D7%94%D7%9E%D7%91%D7%94%D7%95%D7%A8%D7%92%D7%A8-%D7%94%D7%9B%D7%99-%D7%A8%D7%9B%D7%95%D7%AA-%D7%91%D7%A2%D7%95%D7%9C%D7%9D", img: "https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=600" },
-            { title: "עוגיות ריבה מקמח שקדים", category: "קינוחים", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A2%D7%95%D7%92%D7%99%D7%95%D7%AA-%D7%A8%D7%99%D7%91%D7%94-%D7%9E%D7%A7%D7%9E%D7%97-%D7%A9%D7%A7%D7%93%D7%99%D7%9D/", img: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600" },
-            { title: "ביף בורגיניון - השולחן", category: "בשר", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%d7%91%d7%99%d7%a3-%d7%91%d7%95%d7%a8%d7%92%d7%99%d7%a0%d7%99%d7%95%d7%9f/", img: "https://images.unsplash.com/photo-1534939561126-855b8675edd7?w=600" },
-            { title: "שורש סלרי צלוי", category: "צמחוני", url: "https://mobile.mako.co.il/green-nutrition/green_cooking/Article-9650ca0aa7ac871026.htm", img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600" },
-            { title: "סינייה דגים", category: "דגים", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A1%D7%99%D7%A0%D7%99%D7%99%D7%94-%D7%93%D7%92%D7%99%D7%9D/", img: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=600" },
-            { title: "חריימה של רפי כהן", category: "דגים", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%97%D7%A8%D7%99%D7%99%D7%9E%D7%94-%D7%A9%D7%9C-%D7%A9%D7%A3-%D7%A8%D7%A4%D7%99-%D7%9B%D7%94%D7%9F/", img: "https://images.unsplash.com/photo-1534604973900-c41ab4c5e636?w=600" },
-            { title: "סופלקי פרגיות", category: "בשר", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A1%D7%95%D7%A4%D7%9C%D7%A7%D7%99-%D7%A4%D7%A8%D7%92%D7%99%D7%95%D7%AA/", img: "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=600" },
-            { title: "דג יפני - השולחן", category: "דגים", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%93%D7%92-%D7%99%D7%A4%D7%A0%D7%99/", img: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=600" },
-            { title: "שניצל ממולא - אייל שני", category: "בשר", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A9%D7%A0%D7%99%D7%A6%D7%9C-%D7%9E%D7%9E%D7%95%D7%9C%D7%90-%D7%A9%D7%9C-%D7%90%D7%99%D7%99%D7%9C-%D7%A9%D7%A0%D7%99/", img: "https://images.unsplash.com/photo-1594465911080-dd025b340a4b?w=600" },
-            { title: "שניצל בתנור - השולחן", category: "בשר", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A9%D7%A0%D7%99%D7%A6%D7%9C-%D7%91%D7%AA%D7%A0%D7%95%D7%A8/", img: "https://images.unsplash.com/photo-1594465911080-dd025b340a4b?w=600" },
-            { title: "מאפה שקשוקה משפחתי", category: "מאפים", url: "https://www.ronyohananov.com/post/%D7%9E%D7% מאפה-%D7%A9%D7%A7%D7%A9%D7%95%D7%A7%D7%94-%D7%9E%D7%A9%D7%A4%D7%97%D7%AA%D7%99", img: "https://images.unsplash.com/photo-1590412200988-a436bb7050a4?w=600" },
-            { title: "פאייה אינטיאס וירקות", category: "דגים", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A4%D7%90%D7%99%D7%99%D7%94-%D7%A2%D7%9D-%D7%98%D7%95%D7%A8%D7%95-%D7%A9%D7%9C-%D7%90%D7%99%D7%A0%D7%92%D7%99%D7%90%D7%A1-%D7%95%D7%99%D7%A8%D7%A7%D7%95%D7%AA/", img: "https://images.unsplash.com/photo-1534080564607-c9275445f29c?w=600" },
-            { title: "אוסובוקו ושורשים ביין אדום", category: "בשר", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A7%D7%93%D7%A8%D7%AA-%D7%90%D7%95%D7%A1%D7%95%D7%91%D7%95%D7%A7%D7%95-%D7%95%D7%A9%D7%95%D7%A8%D7%A9%D7%99%D7%9D-%D7%91%D7%99%D7%99%D7%9F-%D7%90%D7%93%D7%95%D7%9D/", img: "https://images.unsplash.com/photo-1534939561126-855b8675edd7?w=600" },
-            { title: "מרק פלפלים אדומים", category: "מרקים", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%9E%D7%A8%D7%A7-%D7%A4%D7%9C%D7%A4%D7%9C%D7%99%D7%9D-%D7%90%D7%93%D7%95%D7%9D/", img: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600" },
-            { title: "מרק אפונה שבדי", category: "מרקים", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%9E%D7%A8%D7%A7-%D7%90%D7%A4%D7%95%D7%A0%D7%94-%D7%A9%D7%91%D7%93%D7%99-%D7%98%D7%A2%D7%99%D7%9D/", img: "https://images.unsplash.com/photo-1594756202469-9ff9799b2e42?w=600" },
-            { title: "מאפה בוראטה עוף", category: "בשר", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%9E%D7%90%D7%A4%D7%94-%D7%91%D7%95%D7%A8%D7%90%D7%98%D7%94-%D7%A2%D7%95%D7%A3/", img: "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=600" },
-            { title: "דג ברוטב דוגלרה", category: "דגים", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%93%D7%92-%D7%91%D7%A8%D7%95%D7%98%D7%91-%D7%93%D7%95%D7%92%D7% international-D7%A8%D7%94/", img: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=600" },
-            { title: "בייגלה שקשוקה", category: "מאפים", url: "https://www.ronyohananov.com/post/%D7%91%D7%99%D7%99%D7%92%D7%9C%D7%94-%D7%A9%D7%A7%D7%A9%D7%95%D7%A7%D7%94-%D7%A9%D7%9C-%D7%94%D7%A2%D7%95%D7%9C%D7%9E%D7%95%D7%AA", img: "https://images.unsplash.com/photo-1590412200988-a436bb7050a4?w=600" },
-            { title: "פילאף כרובית עם ירקות", category: "צמחוני", url: "https://www.haaretz.co.il/food/recipes/2021-01-21/ty-article-recipe/0000017f-f4b4-d044-adff-f7fd35ca0000", img: "https://images.unsplash.com/photo-1541832676-9b763b0239ab?w=600" },
-            { title: "דג מרוקאי ב-10 דקות", category: "דגים", url: "https://lizapanelim.com/%D7%93%D7%92-%D7%9E%D7%A8%D7%95%D7%A7%D7%90%D7%99-%D7%91-10-%D7%9ד%D7%A7/", img: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=600" },
-            { title: "בורקס בשר מפורק", category: "בשר", url: "https://www.ronyohananov.com/post/%D7%9E%D7%94%D7%99%D7%A8-%D7%95%D7%A2%D7%A6%D7%91%D7%A0%D7%99-%D7%91%D7%95%D7%A8%D7%A7%D7%A1-%D7%91%D7%A9%D7%A8-%D7%9E%D7%A4%D7%95%D7%A8%D7%A7", img: "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=600" },
-            { title: "לזניה ריקוטה ותרד", category: "איטלקי", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%9C%D7%96%D7%A0%D7%99%D7%94-%D7%A8%D7%99%D7%A7%D7%95%D7%98%D7%94-%D7%95%D7%AA%D7%A8%D7%93/", img: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600" },
-            { title: "פאד תאי של השולחן", category: "אסיאתי", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%d7%a4%d7%90%d7%93-%d7%aa%d7%90%d7%99-2/", img: "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600" },
-            { title: "פאד תאי - מטבח המחתרת", category: "אסיאתי", url: "https://matkonation.com/2017/11/%D7%A4%D7%90%D7%93-%D7%AA%D7%90%D7%99-%D7%91%D7%A1%D7%92%D7%A0%D7%95%D7%9F-%D7%94%D7%9E%D7%97%D7%AA%D7%A8%D7%AA-%D7%9AA%D7%90%D7%99%D7%9C%D7%A0%D7%93%D7%99%D7%AA/", img: "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600" },
-            { title: "בורקס דפי אורז", category: "מאפים", url: "https://foody.co.il/foody_recipe/%d7%91%d7%95%d7%a8%d7%a7%d7%a1-%d7%93%d7%a4%d7%99-%d7%90%d7%95%d7%a8%d7%96-%d7%9c%d7%9c%d7%90-%d7%92%d7%9c%d7%95%d7%98%d7%9f/", img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600" },
-            { title: "מרק קוקוס - קיטשן קואוץ'", category: "מרקים", url: "https://www.thekitchencoach.co.il/%d7%9e%d7%a8%d7%a7-%d7%a7%d7%95%d7%a7%d7%95%d7%a1/", img: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600" },
-            { title: "שורש סלרי צלוי באש", category: "צמחוני", url: "https://search.app/nqptKUYhMbxkWcHt7", img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600" },
-            { title: "שווארמה דג על פיתה", category: "דגים", url: "https://foody.co.il/foody_recipe/%D7%A9%D7%95%D7%95%D7%90%D7%A8%D7%9E%D7%94-%D7%93%D7%92-%D7%A2%D7%9C-%D7%A4%D7%99%D7%AA%D7%94-%D7%A6%D7%A8%D7%95%D7%91%D7%94/", img: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=600" },
-            { title: "חלת בשר מפורק", category: "בשר", url: "https://www.ronyohananov.com/post/%D7%97%D7%9C%D7%94-%D7%9E%D7%9E%D7%95%D7%9C%D7%90%D7%AA", img: "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=600" },
-            { title: "שפונדרה במייפל", category: "בשר", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A9%D7%A4%D7%95%D7%A0%D7%93%D7%A8%D7%94-%D7%91%D7%9E%D7%99%D7%99%D7%A4%D7%9C/", img: "https://images.unsplash.com/photo-1544025162-d76694265947?w=600" },
-            { title: "באן בשר מפורק", category: "מאפים", url: "https://www.krutit.co.il/%D7%9C%D7%97%D7%9E%D7%A0%D7%99%D7%95%D7%AA-%D7%91%D7%90%D7%9F-%D7%91%D7%9E%D7%99%D7%9C%D7%95%D7%99-%D7%91%D7%A9%D7%A8-%D7%9E%D7%A4%D7%95%D7%A8%D7%A7-%D7%91%D7%A8%D7%95%D7%98%D7%91-%D7%A7%D7%A8%D7%9E/", img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600" },
-            { title: "מרק קרם שורשים", category: "מרקים", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%9E%D7%A8%D7%A7-%D7%A7%D7%A8%D7%9D-%D7%A9%D7%95%D7%A8%D7%A9%D7%99%D7%9D-%D7%95%D7%A6%D7%99%D7%A4%D7%A1-%D7%91%D7%98%D7%98%D7%94/", img: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600" },
-            { title: "כרוב ממולא בשר", category: "בשר", url: "https://lizapanelim.com/%D7%9B%D7%A8%D7%95%D7%91-%D7%9E%D7%9E%D7%95%D7%9C%D7%90-%D7%91%D7%A9%D7%A8/", img: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600" },
-            { title: "עוגת תפוחים 'בלתי נראית'", category: "קינוחים", url: "https://rotteml.com/%D7%A2%D7%95%D7%92%D7%AA-%D7%AA%D7%A4%D7%95%D7%97%D7%99%D7%9D-%D7%91%D7%9C%D7%AA%D7%99-%D7%A0%D7%A8%D7%90%D7%99%D7%AA/", img: "https://images.unsplash.com/photo-1568571780765-9276ac6b75bb?w=600" },
-            { title: "צ'ילי קון קרנה", category: "בשר", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A6%D7%B3%D7%99%D7%9C%D7%99-%D7%A7%D7%95%D7%9F-%D7%A7%D7%A8%D7%A0%D7%94/", img: "https://images.unsplash.com/photo-1544025162-d76694265947?w=600" },
-            { title: "כדורי זוקיני ופטה", category: "צמחוני", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%9B%D7%93%D7%95%D7%A8%D7%99-%D7%96%D7%95%D7%A7%D7%99%D7%A0%D7%99-%D7%95%D7%A4%D7%98%D7%94/", img: "https://images.unsplash.com/photo-1541832676-9b763b0239ab?w=600" },
-            { title: "אסאדו מפורק בטריאקי", category: "בשר", url: "https://search.app/CVFQdnE9u6iJDfKr7", img: "https://images.unsplash.com/photo-1544025162-d76694265947?w=600" },
+            { title: "בשר מפורק (אסאדו) - 10 דקות", category: "בשר", url: "https://www.10dakot.co.il/recipe/%D7%90%D7%A1%D7%90%D7%93%D7%95-%D7%9E%D7%A4%D7%95%D7%A8%D7%A7/", img: "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=600" },
+            { title: "ראמן עוף עשיר - אהרוני", category: "מרקים", url: "https://share.google/ydCRteDbgbYBf4vVb", img: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600" },
+            { title: "קציצות כרובית וסולת של מרב", category: "צמחוני", url: "https://lizapanelim.com/%D7%A7%D7%A6%D7%99%D7%A6%D7%95%D7%AA-%D7%9B%D7%A8%D7%95%D7%91%D7%99%D7%AA-%D7%9ה%D7%95%D7%A8%D7%A1%D7%95%D7%AA-%D7%A9%D7%9C-%D7%9E%D7%A8%D7%91/", img: "https://images.unsplash.com/photo-1541832676-9b763b0239ab?w=600" },
+            { title: "חריימה דגים - שף רפי כהן", category: "דגים", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%9BD%D7%A8%D7%99%D7%99%D7%9E%D7%94-%D7%A9%D7%9C-%D7%A9%D7%A3-%D7%A8%D7%A4%D7%99-%D7%9B%D7%94%D7%9F/", img: "https://images.unsplash.com/photo-1534604973900-c41ab4c5e636?w=600" },
             { title: "סלט ענבים במסעדת ממו", category: "סלטים", url: "https://search.app/E5EZcNXozyW5dTU18", img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600" },
             { title: "סלופי ג'ו לילדים", category: "בשר", url: "https://search.app/fSJXr9fUZCM1j7Wz5", img: "https://images.unsplash.com/photo-1550507992-eb63ffee0847?w=600" },
-            { title: "כנפי עוף בדבש וג'ינג'ר", category: "בשר", url: "https://search.app/xPCR27ifGDTMVTUa9", img: "https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=600" },
-            { title: "פירה כרובית של קרוטית", category: "צמחוני", url: "https://search.app/e3vbUJLUm87YAkD99", img: "https://images.unsplash.com/photo-1541832676-9b763b0239ab?w=600" },
-            { title: "מרק חרירה טבעוני", category: "מרקים", url: "https://search.app/r5WiouGQuvJieoGS8", img: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600" },
-            { title: "מרק כתום עם קרם קוקוס", category: "מרקים", url: "https://search.app/ruXBjpcLpMmoU9pw5", img: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600" },
-            { title: "קאצ'ו א פפה - מושיקו גמליאל", category: "איטלקי", url: "https://search.app/i6dnymho4szMDDBV9", img: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600" },
-            { title: "מרק עדשים של אייל שני", category: "מרקים", url: "https://www.haaretz.co.il/food/soups/2015-10-26/ty-article/0000017f-ef04-d4cd-af7f-ef7c5cfd0000", img: "https://images.unsplash.com/photo-1594756202469-9ff9799b2e42?w=600" },
-            { title: "כרוב צלוי - עמיחי באר", category: "סלטים", url: "https://amihaibeer.co.il/roasted-cabbage/", img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600" },
-            { title: "עוף פרובנס - נורית פלד", category: "בשר", url: "https://www.haaretz.co.il/food/nuritpeled/2020-06-09/ty-article/00000181-2305-de27-a1bd-2b4f61fa0000", img: "https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=600" },
-            { title: "אורז ירוק של קרוטית", category: "צמחוני", url: "https://search.app/8qoMyAuLexZb7Zeh7", img: "https://images.unsplash.com/photo-1512058560566-43340af0c33b?w=600" },
-            { title: "אוסובוקו ברנהרד", category: "בשר", url: "https://search.app/MdA6B1FnhLhpW1WNA", img: "https://images.unsplash.com/photo-1534939561126-855b8675edd7?w=600" },
-            { title: "סלט קפרזה חריף", category: "סלטים", url: "https://www.haaretz.co.il/food/recipes/2022-08-20/ty-article-recipe/0000017f-e0f9-d38f-a57f-e6fbb0f70000", img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600" },
-            { title: "סלט חסות ואנדיב", category: "סלטים", url: "https://www.haaretz.co.il/food/recipes/2021-02-08/ty-article-recipe/0000017f-efa8-df98-a5ff-efad133b0000", img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600" },
-            { title: "זיווה גבינות של השולחן", category: "מאפים", url: "https://share.google/riqfol5yuQDzYAFUl", img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600" },
             { title: "כנפי צ'ילי דביקות", category: "בשר", url: "https://share.google/BZuJNjrQK9lNok1E5", img: "https://images.unsplash.com/photo-1527477396000-e27163b481c2?w=600" },
-            { title: "סלט תירס מקסיקני", category: "סלטים", url: "https://www.haaretz.co.il/food/recipes/2025-07-20/ty-article-recipe/00000198-219c-d033-a99c-27bfc6c10000", img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600" },
-            { title: "חטיף תירס אפוי - נטע", category: "צמחוני", url: "https://netacooks.co.il/%D7%97%D7%98%D7%99%D7%A3-%D7%AA%D7%99%D7%A8%D7%A1-%D7%90%D7%A4%D7%95%D7%99-%D7%91%D7%AA%D7%A0%D7%95%D7%A8/", img: "https://images.unsplash.com/photo-1541832676-9b763b0239ab?w=600" },
-            { title: "ראמן עוף של מן טן טן", category: "מרקים", url: "https://share.google/tFSBqbTpD56viAOlS", img: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600" },
-            { title: "ראמן עוף של אהרוני", category: "מרקים", url: "https://share.google/ydCRteDbgbYBf4vVb", img: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600" },
-            { title: "לאב גאי - בית תאילנדי", category: "אסיאתי", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%A1%D7%9C%D7%98-%D7%A2%D7%95%D7%A3-%D7%95%D7%97%D7%9C%D7%A7%D7%99-%D7%A4%D7%A0%D7%99%D7%9D-%D7%A9%D7%9C-%D7%91%D7%99%D7%AA-%D7%AA%D7%90%D7%99%D7%9C%D7%A0%D7%93%D7%99/", img: "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600" },
-            { title: "שרימפס ביין לבן ועגבניות", category: "דגים", url: "https://www.haaretz.co.il/food/recipes/2023-05-07/ty-article-recipe/00000187-e537-dac5-a79f-f57f48b00000", img: "https://images.unsplash.com/photo-1534080564607-c9275445f29c?w=600" },
-            { title: "פויקה דייגים של שף", category: "דגים", url: "#", img: "https://images.unsplash.com/photo-1534604973900-c41ab4c5e636?w=600" },
-            { title: "קוסקוס עם קציצות - לייזה", category: "בשר", url: "https://lizapanelim.com/%D7%A7%D7%95%D7%A1%D7%A7%D7%95%D7%A1-%D7%A2%D7%9D-%D7%A7%D7%A6%D7%99%D7%A6%D7%95%D7%AA/", img: "https://images.unsplash.com/photo-1541544741938-0af808871cc0?w=600" },
-            { title: "קארי דלעת ועוף תאילנדי", category: "אסיאתי", url: "https://share.google/5zfuJO82EmGRgLjzB", img: "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600" },
-            { title: "פיתה יוונית במחבת", category: "מאפים", url: "https://www.ronyohananov.com/post/%D7%A4%D7%99%D7%AA%D7%94-%D7%99%D7%95%D7%95%D7%A0%D7%99%D7%AA-%D7%91%D7%9E%D7%97%D7%91%D7%AA", img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600" },
-            { title: "סלט שומר של אירית", category: "סלטים", url: "https://www.instagram.com/reel/DTnf_r9jb-6/", img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600" }
+            { title: "פאד תאי של השולחן", category: "אסיאתי", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%d7%a4%d7%90%d7%93-%d7%aa%d7%90%d7%99-2/", img: "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=600" },
+            { title: "לזניה ריקוטה ותרד", category: "איטלקי", url: "https://www.hashulchan.co.il/%D7%9E%D7%AA%D7%9B%D7%95%D7%A0%D7%99%D7%9D/%D7%9C%D7%96%D7%A0%D7%99%D7%94-%D7%A8%D7%99%D7%A7%D7%95%D7%98%D7%94-%D7%95%D7%AA%D7%A8%D7%93/", img: "https://images.unsplash.com/photo-1551183053-bf91a1d81141?w=600" },
+            { title: "עוגת תפוחים בלתי נראית", category: "קינוחים", url: "https://rotteml.com/%D7%A2%D7%95%D7%92%D7%AA-%D7%AA%D7%A4%D7%95%D7%96%D7%99%D7%9D-%D7%91%D7%9C%D7%AA%D7%99-%D7%A0%D7%A8%D7%90%D7%99%D7%AA/", img: "https://images.unsplash.com/photo-1568571780765-9276ac6b75bb?w=600" },
+            { title: "בורקס דפי אורז", category: "מאפים", url: "https://foody.co.il/foody_recipe/%d7%91%d7%95%d7%a8%d7%a7%d7%a1-%d7%93%d7%a4%d7%99-%d7%90%d7%95%d7%a8%d7%96-%d7%9c%d7%9c%d7%90-%d7%92%d7%9c%d7%95%d7%98%d7%9f/", img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600" }
+            // הוסף עוד כאן בהמשך
         ];
 
-        // טעינת מתכונים מהזיכרון המקומי
         let userRecipes = JSON.parse(localStorage.getItem('myRecipes')) || [];
-        let allRecipes = [...userRecipes, ...staticRecipes];
-
+        
         function render() {
             const term = document.getElementById('searchInput').value.toLowerCase();
             const grid = document.getElementById('recipesGrid');
+            const allRecipes = [...userRecipes, ...staticRecipes];
             
             const filtered = allRecipes.filter(r => 
                 r.title.toLowerCase().includes(term) || 
                 r.category.toLowerCase().includes(term)
             );
 
+            if (filtered.length === 0) {
+                grid.innerHTML = '<div class="col-span-full">לא נמצאו מתכונים...</div>';
+                return;
+            }
+
             grid.innerHTML = filtered.map(r => `
-                <div class="recipe-card bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-200 flex flex-col">
+                <div class="recipe-card bg-white rounded-3xl overflow-hidden shadow-sm border border-slate-200 flex flex-col h-full">
                     <div class="h-44 overflow-hidden relative">
-                        <img src="${r.img}" class="w-full h-full object-cover">
+                        <img src="${r.img || 'https://images.unsplash.com/photo-1495195129352-aec325a55b65?w=600'}" class="w-full h-full object-cover">
                         <span class="absolute top-3 right-3 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-slate-700 shadow-sm">${r.category}</span>
                     </div>
                     <div class="p-5 flex-grow flex flex-col justify-between items-start">
                         <h3 class="text-xl font-bold text-slate-800 mb-4 leading-tight">${r.title}</h3>
-                        <a href="${r.url}" target="_blank" class="w-full py-3 bg-orange-500 text-white text-center rounded-xl font-bold hover:bg-orange-600 transition-colors shadow-md shadow-orange-100">
+                        <a href="${r.url}" target="_blank" class="w-full py-3 bg-orange-600 text-white text-center rounded-xl font-bold hover:bg-orange-700 transition-colors shadow-md">
                             צפה במתכון המלא
                         </a>
                     </div>
@@ -181,23 +112,12 @@
             const title = document.getElementById('newTitle').value;
             const url = document.getElementById('newUrl').value;
             const category = document.getElementById('newCat').value;
-            
             if(!title || !url) return alert('נא למלא שם ולינק');
             
-            const newRecipe = { 
-                title, 
-                url, 
-                category, 
-                img: "https://images.unsplash.com/photo-1495195129352-aec325a55b65?w=600" 
-            };
-
-            userRecipes.unshift(newRecipe);
+            userRecipes.unshift({ title, url, category });
             localStorage.setItem('myRecipes', JSON.stringify(userRecipes));
-            allRecipes = [...userRecipes, ...staticRecipes];
-            
             render();
             toggleAddModal();
-            
             document.getElementById('newTitle').value = "";
             document.getElementById('newUrl').value = "";
         }
