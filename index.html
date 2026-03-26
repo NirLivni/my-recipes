@@ -16,20 +16,20 @@
             color: #f8fafc;
         }
         
-        /* כרטיס מתכון יוקרתי - זכוכית חלבית */
+  /* כרטיס מתכון יוקרתי - רקע אטום וקריא, תמונות בהירות */
         .recipe-card { 
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
-            background: rgba(30, 41, 59, 0.4); 
-            backdrop-filter: blur(12px); 
+            transition: all 0.3s ease; 
+            background-color: #1e293b; /* רקע כהה אטום (Slate 800) */
             border: 1px solid rgba(255, 255, 255, 0.05);
             border-radius: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
         }
         
         .recipe-card:hover { 
             transform: translateY(-8px); 
-            background: rgba(30, 41, 59, 0.7);
-            border-color: #f97316;
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7);
+            background-color: #334155; /* מתבהר קלות במעבר עכבר */
+            border-color: #f97316; /* גבול כתום במעבר עכבר */
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
         }
 
         input, select {
@@ -310,7 +310,7 @@
             return `
                 <div class="recipe-card overflow-hidden flex flex-col h-full">
                     <div class="h-52 overflow-hidden relative">
-                        <img src="${r.img || fallback}" class="w-full h-full object-cover grayscale-[15%] hover:grayscale-0 transition-all duration-500" loading="lazy" onerror="this.src='${fallback}'">
+<img src="${r.img || fallback}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" loading="lazy" onerror="this.src='${fallback}'">
                         <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent"></div>
                         <span class="absolute top-4 right-4 text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full border ${colorClass}">
                             ${r.category}
